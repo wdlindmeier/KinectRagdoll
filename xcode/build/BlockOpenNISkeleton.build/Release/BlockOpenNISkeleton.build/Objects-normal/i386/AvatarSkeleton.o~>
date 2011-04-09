@@ -1,9 +1,0 @@
-In file included from /c++/Cinder/blocks/BlockOpenNI/samples/BlockOpenNISkeletonMutalbe/xcode/../../../include/VOpenNICommon.h:33,
-                 from /c++/Cinder/blocks/BlockOpenNI/samples/BlockOpenNISkeletonMutalbe/xcode/../../../include/VOpenNIHeaders.h:4,
-                 from /c++/Cinder/blocks/BlockOpenNI/samples/BlockOpenNISkeletonMutalbe/xcode/../../../src/AvatarSkeleton.cpp:10:
-/c++/Cinder/blocks/BlockOpenNI/samples/BlockOpenNISkeletonMutalbe/xcode/../../../include/OpenNI/XnCppWrapper.h: In member function 'XnStatus xn::NodeInfo::GetInstance(xn::ProductionNode&) const':
-/c++/Cinder/blocks/BlockOpenNI/samples/BlockOpenNISkeletonMutalbe/xcode/../../../include/OpenNI/XnCppWrapper.h:4612: warning: unused variable 'nRetVal'
-In file included from /c++/Cinder/blocks/BlockOpenNI/samples/BlockOpenNISkeletonMutalbe/xcode/../../../include/VOpenNIHeaders.h:6,
-                 from /c++/Cinder/blocks/BlockOpenNI/samples/BlockOpenNISkeletonMutalbe/xcode/../../../src/AvatarSkeleton.cpp:10:
-/c++/Cinder/blocks/BlockOpenNI/samples/BlockOpenNISkeletonMutalbe/xcode/../../../include/VOpenNIDevice.h: In member function 'V::OpenNIDeviceManager& V::OpenNIDeviceManager::operator=(const V::OpenNIDeviceManager&)':
-/c++/Cinder/blocks/BlockOpenNI/samples/BlockOpenNISkeletonMutalbe/xcode/../../../include/VOpenNIDevice.h:220: warning: no return statement in function returning non-void

@@ -16,7 +16,7 @@
 #define HalfPI			(PI * 0.5)
 #define OneAndHalfPI	(PI * 1.5)
 
-ci::Vec2f rotateVecByRadians(const ci::Vec2f &vec, float radians);
+ci::Vec2f rotateVecByRadians(const ci::Vec2f &vec, const float radians);
 
 using namespace ci;
 
@@ -26,9 +26,9 @@ public:
 	
 	DollBlob(std::string imagePath);
 	void draw();
-	void update(const ci::Vec3f &anchor);
+	void update(const ci::Vec3f &anchor, float scale);
 	
-	float			mDepth;
+	float			mScale;
 	ci::Vec2f		mVecAngle;
 	ci::Vec3f		mVecAnchor;
 	gl::Texture		mTexImage;

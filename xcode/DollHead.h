@@ -14,7 +14,7 @@ class DollHead : public DollBlob{
 public:
 
 	DollHead(std::string imagePath);
-	void update(const ci::Vec3f &anchor, const Vec2f &angle);
+	void update(const ci::Vec3f &anchor, const Vec2f &angle, const float scale);
 	void draw();
 	
 };

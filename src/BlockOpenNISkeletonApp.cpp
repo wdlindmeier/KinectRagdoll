@@ -52,7 +52,7 @@ public:
 
 protected:
 	uint32_t					_width, _height;
-	uint8_t						*mData;
+	uint8_t						*mData;	
 };
 
 
@@ -151,11 +151,13 @@ public:	// Members
 	gl::Texture				mOneUserTex;	 
 	
 	AvatarSkeleton			*mAvatar;
+	float					mScale;
 };
 
 void BlockOpenNISampleAppApp::setup()
 {
 	mAvatar = new AvatarSkeleton("");
+	mScale = 112.0;
 	
 	_manager = V::OpenNIDeviceManager::InstancePtr();
 	_device0 = _manager->createDevice( "data/configIR.xml", true );
@@ -218,7 +220,7 @@ void BlockOpenNISampleAppApp::update()
 			joints.push_back(Vec2f(point.X, point.Y));
 		}
 		
-		mAvatar->update(joints);	
+		mAvatar->update(joints, mScale);	
 	}
 }
 
@@ -248,15 +250,23 @@ void BlockOpenNISampleAppApp::draw()
 	}
 }
 
-
-
-
 void BlockOpenNISampleAppApp::keyDown( KeyEvent event )
 {
-	if( event.getCode() == KeyEvent::KEY_ESCAPE )
-	{
-		this->quit();
-		this->shutdown();
+	switch (event.getCode()) {
+		case KeyEvent::KEY_ESCAPE:
+			this->quit();
+			this->shutdown();
+			break;
+		case KeyEvent::KEY_DOWN:
+			mScale -= 1.0;
+			console() << "mScale: " << mScale << "\n";
+			break;
+		case KeyEvent::KEY_UP:
+			mScale += 1.0;
+			console() << "mScale: " << mScale << "\n";
+			break;
+		default:
+			break;
 	}
 }
 
