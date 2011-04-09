@@ -152,12 +152,14 @@ public:	// Members
 	
 	AvatarSkeleton			*mAvatar;
 	float					mScale;
+	bool					mShouldRenderSkeleton, mIsTracking;
 };
 
 void BlockOpenNISampleAppApp::setup()
 {
 	mAvatar = new AvatarSkeleton("");
 	mScale = 112.0;
+	mShouldRenderSkeleton = false;
 	
 	_manager = V::OpenNIDeviceManager::InstancePtr();
 	_device0 = _manager->createDevice( "data/configIR.xml", true );
@@ -195,11 +197,14 @@ void BlockOpenNISampleAppApp::update()
 	// Uses manager to handle users.
 	if( _manager->hasUsers() && _manager->hasUser(1) ){ 
 		mOneUserTex.update( getUserColorImage(1) );
-		
-		
+				
 		xn::DepthGenerator* depth = _device0->getDepthGenerator();
 		
 		V::OpenNIBoneList boneList = _manager->getUser(1)->getBoneList();
+		
+		mIsTracking = _manager->getUser(1)->getUserState() == V::USER_TRACKING;
+		//console() << "mIsTracking ? " << (mIsTracking ? "YES" : "NO") << "\n";
+		
 		std::vector<Vec2f> joints;
 		
 		int index = 0;
@@ -231,22 +236,36 @@ void BlockOpenNISampleAppApp::draw()
 
 	gl::setMatricesWindow( 640, 480 );
 
+	glEnable( GL_TEXTURE_2D );
+	gl::color( cinder::ColorA(1, 1, 1, 1) );
+
+	// Draw the green user texture
+	if( _manager->hasUsers() && _manager->hasUser(1) ){ 
+
+		if(!mIsTracking){
+			// Only draw the user texture if we're not tracking 
+			gl::draw( mOneUserTex, Rectf( 0, 0, 640, 480) );		
+		}
+	}
+
+	// Draw the info panels
 	float sx = 320/2;
 	float sy = 240/2;
 	float xoff = 10;
-	float yoff = 10;
-	glEnable( GL_TEXTURE_2D );
-	gl::color( cinder::ColorA(1, 1, 1, 1) );
-	if( _manager->hasUsers() && _manager->hasUser(1) ) gl::draw( mOneUserTex, Rectf( 0, 0, 640, 480) );
+	float yoff = 10;		
 	gl::draw( mDepthTex, Rectf( xoff, yoff, xoff+sx, yoff+sy) );
 	gl::draw( mColorTex, Rectf( xoff+sx*1, yoff, xoff+sx*2, yoff+sy) );
 
-	mAvatar->draw();
-
 	if( _manager->hasUsers() && _manager->hasUser(1) )
 	{
-		// Render skeleton if available
-		_manager->renderJoints( 3 );
+		// Draw the avatar
+		mAvatar->draw();
+
+		// Draw the skeleton 
+		if(mShouldRenderSkeleton){
+			// Render skeleton if available
+			_manager->renderJoints( 3 );
+		}
 	}
 }
 
@@ -260,10 +279,15 @@ void BlockOpenNISampleAppApp::keyDown( KeyEvent event )
 		case KeyEvent::KEY_DOWN:
 			mScale -= 1.0;
 			console() << "mScale: " << mScale << "\n";
+			// NOTE: This should be tilt
 			break;
 		case KeyEvent::KEY_UP:
 			mScale += 1.0;
 			console() << "mScale: " << mScale << "\n";
+			// NOTE: This should be tilt
+			break;
+		case KeyEvent::KEY_s:
+			mShouldRenderSkeleton = !mShouldRenderSkeleton;
 			break;
 		default:
 			break;
