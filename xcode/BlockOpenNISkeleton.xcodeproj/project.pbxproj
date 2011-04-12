@@ -29,16 +29,45 @@
 		A929ADDE13482EAB004E43F2 /* VOpenNIDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A929AD0213482EAB004E43F2 /* VOpenNIDevice.cpp */; };
 		A929ADDF13482EAB004E43F2 /* VOpenNIDeviceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A929AD0313482EAB004E43F2 /* VOpenNIDeviceManager.cpp */; };
 		A929ADE013482EAB004E43F2 /* VOpenNIUser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A929AD0413482EAB004E43F2 /* VOpenNIUser.cpp */; };
-		A9F842A4134EDF7E005977BE /* HEAD.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F8429A134EDF7E005977BE /* HEAD.png */; };
-		A9F842A5134EDF7E005977BE /* LEFT_ELBOW_2_LEFT_HAND.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F8429B134EDF7E005977BE /* LEFT_ELBOW_2_LEFT_HAND.png */; };
-		A9F842A6134EDF7E005977BE /* LEFT_HIP_2_LEFT_KNEE.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F8429C134EDF7E005977BE /* LEFT_HIP_2_LEFT_KNEE.png */; };
-		A9F842A7134EDF7E005977BE /* LEFT_KNEE_2_LEFT_FOOT.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F8429D134EDF7E005977BE /* LEFT_KNEE_2_LEFT_FOOT.png */; };
-		A9F842A8134EDF7E005977BE /* LEFT_SHOULDER_2_LEFT_ELBOW.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F8429E134EDF7E005977BE /* LEFT_SHOULDER_2_LEFT_ELBOW.png */; };
-		A9F842A9134EDF7E005977BE /* RIGHT_ELBOW_2_RIGHT_HAND.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F8429F134EDF7E005977BE /* RIGHT_ELBOW_2_RIGHT_HAND.png */; };
-		A9F842AA134EDF7E005977BE /* RIGHT_HIP_2_RIGHT_KNEE.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F842A0134EDF7E005977BE /* RIGHT_HIP_2_RIGHT_KNEE.png */; };
-		A9F842AB134EDF7E005977BE /* RIGHT_KNEE_2_RIGHT_FOOT.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F842A1134EDF7E005977BE /* RIGHT_KNEE_2_RIGHT_FOOT.png */; };
-		A9F842AC134EDF7E005977BE /* RIGHT_SHOULDER_2_RIGHT_ELBOW.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F842A2134EDF7E005977BE /* RIGHT_SHOULDER_2_RIGHT_ELBOW.png */; };
-		A9F842AD134EDF7E005977BE /* TORSO.png in Resources */ = {isa = PBXBuildFile; fileRef = A9F842A3134EDF7E005977BE /* TORSO.png */; };
+		A9B7BFFA1354085600C489DB /* sk0_HEAD.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7BFF11354085600C489DB /* sk0_HEAD.png */; };
+		A9B7BFFB1354085600C489DB /* sk0_LEFT_ELBOW_2_LEFT_HAND.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7BFF21354085600C489DB /* sk0_LEFT_ELBOW_2_LEFT_HAND.png */; };
+		A9B7BFFC1354085600C489DB /* sk0_LEFT_KNEE_2_LEFT_FOOT.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7BFF31354085600C489DB /* sk0_LEFT_KNEE_2_LEFT_FOOT.png */; };
+		A9B7BFFD1354085600C489DB /* sk0_LEFT_SHOULDER_2_LEFT_ELBOW.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7BFF41354085600C489DB /* sk0_LEFT_SHOULDER_2_LEFT_ELBOW.png */; };
+		A9B7BFFE1354085600C489DB /* sk0_RIGHT_ELBOW_2_RIGHT_HAND.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7BFF51354085600C489DB /* sk0_RIGHT_ELBOW_2_RIGHT_HAND.png */; };
+		A9B7BFFF1354085600C489DB /* sk0_RIGHT_HIP_2_RIGHT_KNEE.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7BFF61354085600C489DB /* sk0_RIGHT_HIP_2_RIGHT_KNEE.png */; };
+		A9B7C0001354085600C489DB /* sk0_RIGHT_KNEE_2_RIGHT_FOOT.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7BFF71354085600C489DB /* sk0_RIGHT_KNEE_2_RIGHT_FOOT.png */; };
+		A9B7C0011354085600C489DB /* sk0_RIGHT_SHOULDER_2_RIGHT_ELBOW.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7BFF81354085600C489DB /* sk0_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */; };
+		A9B7C0021354085600C489DB /* sk0_TORSO.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7BFF91354085600C489DB /* sk0_TORSO.png */; };
+		A9B7C00D1354086100C489DB /* sk1_HEAD.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0031354086100C489DB /* sk1_HEAD.png */; };
+		A9B7C00E1354086100C489DB /* sk1_LEFT_ELBOW_2_LEFT_HAND.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0041354086100C489DB /* sk1_LEFT_ELBOW_2_LEFT_HAND.png */; };
+		A9B7C00F1354086100C489DB /* sk1_LEFT_HIP_2_LEFT_KNEE.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0051354086100C489DB /* sk1_LEFT_HIP_2_LEFT_KNEE.png */; };
+		A9B7C0101354086100C489DB /* sk1_LEFT_KNEE_2_LEFT_FOOT.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0061354086100C489DB /* sk1_LEFT_KNEE_2_LEFT_FOOT.png */; };
+		A9B7C0111354086100C489DB /* sk1_LEFT_SHOULDER_2_LEFT_ELBOW.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0071354086100C489DB /* sk1_LEFT_SHOULDER_2_LEFT_ELBOW.png */; };
+		A9B7C0121354086100C489DB /* sk1_RIGHT_ELBOW_2_RIGHT_HAND.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0081354086100C489DB /* sk1_RIGHT_ELBOW_2_RIGHT_HAND.png */; };
+		A9B7C0131354086100C489DB /* sk1_RIGHT_HIP_2_RIGHT_KNEE.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0091354086100C489DB /* sk1_RIGHT_HIP_2_RIGHT_KNEE.png */; };
+		A9B7C0141354086100C489DB /* sk1_RIGHT_KNEE_2_RIGHT_FOOT.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C00A1354086100C489DB /* sk1_RIGHT_KNEE_2_RIGHT_FOOT.png */; };
+		A9B7C0151354086100C489DB /* sk1_RIGHT_SHOULDER_2_RIGHT_ELBOW.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C00B1354086100C489DB /* sk1_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */; };
+		A9B7C0161354086100C489DB /* sk1_TORSO.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C00C1354086100C489DB /* sk1_TORSO.png */; };
+		A9B7C0211354086E00C489DB /* sk2_HEAD.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0171354086E00C489DB /* sk2_HEAD.png */; };
+		A9B7C0221354086E00C489DB /* sk2_LEFT_ELBOW_2_LEFT_HAND.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0181354086E00C489DB /* sk2_LEFT_ELBOW_2_LEFT_HAND.png */; };
+		A9B7C0231354086E00C489DB /* sk2_LEFT_HIP_2_LEFT_KNEE.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0191354086E00C489DB /* sk2_LEFT_HIP_2_LEFT_KNEE.png */; };
+		A9B7C0241354086E00C489DB /* sk2_LEFT_KNEE_2_LEFT_FOOT.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C01A1354086E00C489DB /* sk2_LEFT_KNEE_2_LEFT_FOOT.png */; };
+		A9B7C0251354086E00C489DB /* sk2_LEFT_SHOULDER_2_LEFT_ELBOW.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C01B1354086E00C489DB /* sk2_LEFT_SHOULDER_2_LEFT_ELBOW.png */; };
+		A9B7C0261354086E00C489DB /* sk2_RIGHT_ELBOW_2_RIGHT_HAND.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C01C1354086E00C489DB /* sk2_RIGHT_ELBOW_2_RIGHT_HAND.png */; };
+		A9B7C0271354086E00C489DB /* sk2_RIGHT_HIP_2_RIGHT_KNEE.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C01D1354086E00C489DB /* sk2_RIGHT_HIP_2_RIGHT_KNEE.png */; };
+		A9B7C0281354086E00C489DB /* sk2_RIGHT_KNEE_2_RIGHT_FOOT.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C01E1354086E00C489DB /* sk2_RIGHT_KNEE_2_RIGHT_FOOT.png */; };
+		A9B7C0291354086E00C489DB /* sk2_RIGHT_SHOULDER_2_RIGHT_ELBOW.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C01F1354086E00C489DB /* sk2_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */; };
+		A9B7C02A1354086E00C489DB /* sk2_TORSO.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0201354086E00C489DB /* sk2_TORSO.png */; };
+		A9B7C0351354087900C489DB /* sk3_HEAD.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C02B1354087900C489DB /* sk3_HEAD.png */; };
+		A9B7C0361354087900C489DB /* sk3_LEFT_ELBOW_2_LEFT_HAND.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C02C1354087900C489DB /* sk3_LEFT_ELBOW_2_LEFT_HAND.png */; };
+		A9B7C0371354087900C489DB /* sk3_LEFT_HIP_2_LEFT_KNEE.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C02D1354087900C489DB /* sk3_LEFT_HIP_2_LEFT_KNEE.png */; };
+		A9B7C0381354087900C489DB /* sk3_LEFT_KNEE_2_LEFT_FOOT.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C02E1354087900C489DB /* sk3_LEFT_KNEE_2_LEFT_FOOT.png */; };
+		A9B7C0391354087900C489DB /* sk3_LEFT_SHOULDER_2_LEFT_ELBOW.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C02F1354087900C489DB /* sk3_LEFT_SHOULDER_2_LEFT_ELBOW.png */; };
+		A9B7C03A1354087900C489DB /* sk3_RIGHT_ELBOW_2_RIGHT_HAND.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0301354087900C489DB /* sk3_RIGHT_ELBOW_2_RIGHT_HAND.png */; };
+		A9B7C03B1354087900C489DB /* sk3_RIGHT_HIP_2_RIGHT_KNEE.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0311354087900C489DB /* sk3_RIGHT_HIP_2_RIGHT_KNEE.png */; };
+		A9B7C03C1354087900C489DB /* sk3_RIGHT_KNEE_2_RIGHT_FOOT.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0321354087900C489DB /* sk3_RIGHT_KNEE_2_RIGHT_FOOT.png */; };
+		A9B7C03D1354087900C489DB /* sk3_RIGHT_SHOULDER_2_RIGHT_ELBOW.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0331354087900C489DB /* sk3_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */; };
+		A9B7C03E1354087900C489DB /* sk3_TORSO.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B7C0341354087900C489DB /* sk3_TORSO.png */; };
 		A9F842CF134EDF82005977BE /* AvatarSkeleton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F842CA134EDF82005977BE /* AvatarSkeleton.cpp */; };
 		A9F842D0134EDF82005977BE /* DollBlob.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F842CB134EDF82005977BE /* DollBlob.cpp */; };
 		A9F842D1134EDF82005977BE /* DollBone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9F842CC134EDF82005977BE /* DollBone.cpp */; };
@@ -129,21 +158,50 @@
 		A929AC9313482EAB004E43F2 /* NiSampleModule.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = NiSampleModule.lib; sourceTree = "<group>"; };
 		A929AC9413482EAB004E43F2 /* openNI.exp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.exports; path = openNI.exp; sourceTree = "<group>"; };
 		A929AC9513482EAB004E43F2 /* openNI.lib */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = openNI.lib; sourceTree = "<group>"; };
-		A929AC9613482EAB004E43F2 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
+		A929AC9613482EAB004E43F2 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TODO; path = ../../../TODO; sourceTree = "<group>"; };
 		A929AD0113482EAB004E43F2 /* OpenNIRecorder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpenNIRecorder.cpp; sourceTree = "<group>"; };
 		A929AD0213482EAB004E43F2 /* VOpenNIDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VOpenNIDevice.cpp; sourceTree = "<group>"; };
 		A929AD0313482EAB004E43F2 /* VOpenNIDeviceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VOpenNIDeviceManager.cpp; sourceTree = "<group>"; };
 		A929AD0413482EAB004E43F2 /* VOpenNIUser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VOpenNIUser.cpp; sourceTree = "<group>"; };
-		A9F8429A134EDF7E005977BE /* HEAD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HEAD.png; sourceTree = "<group>"; };
-		A9F8429B134EDF7E005977BE /* LEFT_ELBOW_2_LEFT_HAND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LEFT_ELBOW_2_LEFT_HAND.png; sourceTree = "<group>"; };
-		A9F8429C134EDF7E005977BE /* LEFT_HIP_2_LEFT_KNEE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LEFT_HIP_2_LEFT_KNEE.png; sourceTree = "<group>"; };
-		A9F8429D134EDF7E005977BE /* LEFT_KNEE_2_LEFT_FOOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LEFT_KNEE_2_LEFT_FOOT.png; sourceTree = "<group>"; };
-		A9F8429E134EDF7E005977BE /* LEFT_SHOULDER_2_LEFT_ELBOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LEFT_SHOULDER_2_LEFT_ELBOW.png; sourceTree = "<group>"; };
-		A9F8429F134EDF7E005977BE /* RIGHT_ELBOW_2_RIGHT_HAND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RIGHT_ELBOW_2_RIGHT_HAND.png; sourceTree = "<group>"; };
-		A9F842A0134EDF7E005977BE /* RIGHT_HIP_2_RIGHT_KNEE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RIGHT_HIP_2_RIGHT_KNEE.png; sourceTree = "<group>"; };
-		A9F842A1134EDF7E005977BE /* RIGHT_KNEE_2_RIGHT_FOOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RIGHT_KNEE_2_RIGHT_FOOT.png; sourceTree = "<group>"; };
-		A9F842A2134EDF7E005977BE /* RIGHT_SHOULDER_2_RIGHT_ELBOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RIGHT_SHOULDER_2_RIGHT_ELBOW.png; sourceTree = "<group>"; };
-		A9F842A3134EDF7E005977BE /* TORSO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TORSO.png; sourceTree = "<group>"; };
+		A9B7BFF11354085600C489DB /* sk0_HEAD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk0_HEAD.png; path = ../resources/sk0_HEAD.png; sourceTree = SOURCE_ROOT; };
+		A9B7BFF21354085600C489DB /* sk0_LEFT_ELBOW_2_LEFT_HAND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk0_LEFT_ELBOW_2_LEFT_HAND.png; path = ../resources/sk0_LEFT_ELBOW_2_LEFT_HAND.png; sourceTree = SOURCE_ROOT; };
+		A9B7BFF31354085600C489DB /* sk0_LEFT_KNEE_2_LEFT_FOOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk0_LEFT_KNEE_2_LEFT_FOOT.png; path = ../resources/sk0_LEFT_KNEE_2_LEFT_FOOT.png; sourceTree = SOURCE_ROOT; };
+		A9B7BFF41354085600C489DB /* sk0_LEFT_SHOULDER_2_LEFT_ELBOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk0_LEFT_SHOULDER_2_LEFT_ELBOW.png; path = ../resources/sk0_LEFT_SHOULDER_2_LEFT_ELBOW.png; sourceTree = SOURCE_ROOT; };
+		A9B7BFF51354085600C489DB /* sk0_RIGHT_ELBOW_2_RIGHT_HAND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk0_RIGHT_ELBOW_2_RIGHT_HAND.png; path = ../resources/sk0_RIGHT_ELBOW_2_RIGHT_HAND.png; sourceTree = SOURCE_ROOT; };
+		A9B7BFF61354085600C489DB /* sk0_RIGHT_HIP_2_RIGHT_KNEE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk0_RIGHT_HIP_2_RIGHT_KNEE.png; path = ../resources/sk0_RIGHT_HIP_2_RIGHT_KNEE.png; sourceTree = SOURCE_ROOT; };
+		A9B7BFF71354085600C489DB /* sk0_RIGHT_KNEE_2_RIGHT_FOOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk0_RIGHT_KNEE_2_RIGHT_FOOT.png; path = ../resources/sk0_RIGHT_KNEE_2_RIGHT_FOOT.png; sourceTree = SOURCE_ROOT; };
+		A9B7BFF81354085600C489DB /* sk0_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk0_RIGHT_SHOULDER_2_RIGHT_ELBOW.png; path = ../resources/sk0_RIGHT_SHOULDER_2_RIGHT_ELBOW.png; sourceTree = SOURCE_ROOT; };
+		A9B7BFF91354085600C489DB /* sk0_TORSO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk0_TORSO.png; path = ../resources/sk0_TORSO.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0031354086100C489DB /* sk1_HEAD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk1_HEAD.png; path = ../resources/sk1_HEAD.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0041354086100C489DB /* sk1_LEFT_ELBOW_2_LEFT_HAND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk1_LEFT_ELBOW_2_LEFT_HAND.png; path = ../resources/sk1_LEFT_ELBOW_2_LEFT_HAND.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0051354086100C489DB /* sk1_LEFT_HIP_2_LEFT_KNEE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk1_LEFT_HIP_2_LEFT_KNEE.png; path = ../resources/sk1_LEFT_HIP_2_LEFT_KNEE.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0061354086100C489DB /* sk1_LEFT_KNEE_2_LEFT_FOOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk1_LEFT_KNEE_2_LEFT_FOOT.png; path = ../resources/sk1_LEFT_KNEE_2_LEFT_FOOT.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0071354086100C489DB /* sk1_LEFT_SHOULDER_2_LEFT_ELBOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk1_LEFT_SHOULDER_2_LEFT_ELBOW.png; path = ../resources/sk1_LEFT_SHOULDER_2_LEFT_ELBOW.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0081354086100C489DB /* sk1_RIGHT_ELBOW_2_RIGHT_HAND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk1_RIGHT_ELBOW_2_RIGHT_HAND.png; path = ../resources/sk1_RIGHT_ELBOW_2_RIGHT_HAND.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0091354086100C489DB /* sk1_RIGHT_HIP_2_RIGHT_KNEE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk1_RIGHT_HIP_2_RIGHT_KNEE.png; path = ../resources/sk1_RIGHT_HIP_2_RIGHT_KNEE.png; sourceTree = SOURCE_ROOT; };
+		A9B7C00A1354086100C489DB /* sk1_RIGHT_KNEE_2_RIGHT_FOOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk1_RIGHT_KNEE_2_RIGHT_FOOT.png; path = ../resources/sk1_RIGHT_KNEE_2_RIGHT_FOOT.png; sourceTree = SOURCE_ROOT; };
+		A9B7C00B1354086100C489DB /* sk1_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk1_RIGHT_SHOULDER_2_RIGHT_ELBOW.png; path = ../resources/sk1_RIGHT_SHOULDER_2_RIGHT_ELBOW.png; sourceTree = SOURCE_ROOT; };
+		A9B7C00C1354086100C489DB /* sk1_TORSO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk1_TORSO.png; path = ../resources/sk1_TORSO.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0171354086E00C489DB /* sk2_HEAD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk2_HEAD.png; path = ../resources/sk2_HEAD.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0181354086E00C489DB /* sk2_LEFT_ELBOW_2_LEFT_HAND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk2_LEFT_ELBOW_2_LEFT_HAND.png; path = ../resources/sk2_LEFT_ELBOW_2_LEFT_HAND.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0191354086E00C489DB /* sk2_LEFT_HIP_2_LEFT_KNEE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk2_LEFT_HIP_2_LEFT_KNEE.png; path = ../resources/sk2_LEFT_HIP_2_LEFT_KNEE.png; sourceTree = SOURCE_ROOT; };
+		A9B7C01A1354086E00C489DB /* sk2_LEFT_KNEE_2_LEFT_FOOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk2_LEFT_KNEE_2_LEFT_FOOT.png; path = ../resources/sk2_LEFT_KNEE_2_LEFT_FOOT.png; sourceTree = SOURCE_ROOT; };
+		A9B7C01B1354086E00C489DB /* sk2_LEFT_SHOULDER_2_LEFT_ELBOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk2_LEFT_SHOULDER_2_LEFT_ELBOW.png; path = ../resources/sk2_LEFT_SHOULDER_2_LEFT_ELBOW.png; sourceTree = SOURCE_ROOT; };
+		A9B7C01C1354086E00C489DB /* sk2_RIGHT_ELBOW_2_RIGHT_HAND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk2_RIGHT_ELBOW_2_RIGHT_HAND.png; path = ../resources/sk2_RIGHT_ELBOW_2_RIGHT_HAND.png; sourceTree = SOURCE_ROOT; };
+		A9B7C01D1354086E00C489DB /* sk2_RIGHT_HIP_2_RIGHT_KNEE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk2_RIGHT_HIP_2_RIGHT_KNEE.png; path = ../resources/sk2_RIGHT_HIP_2_RIGHT_KNEE.png; sourceTree = SOURCE_ROOT; };
+		A9B7C01E1354086E00C489DB /* sk2_RIGHT_KNEE_2_RIGHT_FOOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk2_RIGHT_KNEE_2_RIGHT_FOOT.png; path = ../resources/sk2_RIGHT_KNEE_2_RIGHT_FOOT.png; sourceTree = SOURCE_ROOT; };
+		A9B7C01F1354086E00C489DB /* sk2_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk2_RIGHT_SHOULDER_2_RIGHT_ELBOW.png; path = ../resources/sk2_RIGHT_SHOULDER_2_RIGHT_ELBOW.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0201354086E00C489DB /* sk2_TORSO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk2_TORSO.png; path = ../resources/sk2_TORSO.png; sourceTree = SOURCE_ROOT; };
+		A9B7C02B1354087900C489DB /* sk3_HEAD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk3_HEAD.png; path = ../resources/sk3_HEAD.png; sourceTree = SOURCE_ROOT; };
+		A9B7C02C1354087900C489DB /* sk3_LEFT_ELBOW_2_LEFT_HAND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk3_LEFT_ELBOW_2_LEFT_HAND.png; path = ../resources/sk3_LEFT_ELBOW_2_LEFT_HAND.png; sourceTree = SOURCE_ROOT; };
+		A9B7C02D1354087900C489DB /* sk3_LEFT_HIP_2_LEFT_KNEE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk3_LEFT_HIP_2_LEFT_KNEE.png; path = ../resources/sk3_LEFT_HIP_2_LEFT_KNEE.png; sourceTree = SOURCE_ROOT; };
+		A9B7C02E1354087900C489DB /* sk3_LEFT_KNEE_2_LEFT_FOOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk3_LEFT_KNEE_2_LEFT_FOOT.png; path = ../resources/sk3_LEFT_KNEE_2_LEFT_FOOT.png; sourceTree = SOURCE_ROOT; };
+		A9B7C02F1354087900C489DB /* sk3_LEFT_SHOULDER_2_LEFT_ELBOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk3_LEFT_SHOULDER_2_LEFT_ELBOW.png; path = ../resources/sk3_LEFT_SHOULDER_2_LEFT_ELBOW.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0301354087900C489DB /* sk3_RIGHT_ELBOW_2_RIGHT_HAND.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk3_RIGHT_ELBOW_2_RIGHT_HAND.png; path = ../resources/sk3_RIGHT_ELBOW_2_RIGHT_HAND.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0311354087900C489DB /* sk3_RIGHT_HIP_2_RIGHT_KNEE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk3_RIGHT_HIP_2_RIGHT_KNEE.png; path = ../resources/sk3_RIGHT_HIP_2_RIGHT_KNEE.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0321354087900C489DB /* sk3_RIGHT_KNEE_2_RIGHT_FOOT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk3_RIGHT_KNEE_2_RIGHT_FOOT.png; path = ../resources/sk3_RIGHT_KNEE_2_RIGHT_FOOT.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0331354087900C489DB /* sk3_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk3_RIGHT_SHOULDER_2_RIGHT_ELBOW.png; path = ../resources/sk3_RIGHT_SHOULDER_2_RIGHT_ELBOW.png; sourceTree = SOURCE_ROOT; };
+		A9B7C0341354087900C489DB /* sk3_TORSO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sk3_TORSO.png; path = ../resources/sk3_TORSO.png; sourceTree = SOURCE_ROOT; };
 		A9F842CA134EDF82005977BE /* AvatarSkeleton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AvatarSkeleton.cpp; path = ../../../src/AvatarSkeleton.cpp; sourceTree = "<group>"; };
 		A9F842CB134EDF82005977BE /* DollBlob.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DollBlob.cpp; path = ../../../src/DollBlob.cpp; sourceTree = "<group>"; };
 		A9F842CC134EDF82005977BE /* DollBone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DollBone.cpp; path = ../../../src/DollBone.cpp; sourceTree = "<group>"; };
@@ -257,16 +315,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A9F8429A134EDF7E005977BE /* HEAD.png */,
-				A9F8429B134EDF7E005977BE /* LEFT_ELBOW_2_LEFT_HAND.png */,
-				A9F8429C134EDF7E005977BE /* LEFT_HIP_2_LEFT_KNEE.png */,
-				A9F8429D134EDF7E005977BE /* LEFT_KNEE_2_LEFT_FOOT.png */,
-				A9F8429E134EDF7E005977BE /* LEFT_SHOULDER_2_LEFT_ELBOW.png */,
-				A9F8429F134EDF7E005977BE /* RIGHT_ELBOW_2_RIGHT_HAND.png */,
-				A9F842A0134EDF7E005977BE /* RIGHT_HIP_2_RIGHT_KNEE.png */,
-				A9F842A1134EDF7E005977BE /* RIGHT_KNEE_2_RIGHT_FOOT.png */,
-				A9F842A2134EDF7E005977BE /* RIGHT_SHOULDER_2_RIGHT_ELBOW.png */,
-				A9F842A3134EDF7E005977BE /* TORSO.png */,
+				A9B7BFD01353FF2800C489DB /* Avatar 3 */,
+				A9B7BFCF1353FF1E00C489DB /* Avatar 2 */,
+				A9B7BFCE1353FF1400C489DB /* Avatar 1 */,
+				A9B7BFCD1353FF0500C489DB /* Avatar 0 */,
+				A929AC9613482EAB004E43F2 /* TODO */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				00CCAF14116A9FEE008396D5 /* CinderApp.icns */,
 			);
@@ -287,7 +340,6 @@
 			children = (
 				A929AC4D13482EAB004E43F2 /* include */,
 				A929AC8E13482EAB004E43F2 /* lib */,
-				A929AC9613482EAB004E43F2 /* TODO */,
 				A929AD0013482EAB004E43F2 /* src */,
 			);
 			name = BlockOpenNI;
@@ -439,6 +491,73 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		A9B7BFCD1353FF0500C489DB /* Avatar 0 */ = {
+			isa = PBXGroup;
+			children = (
+				A9B7BFF11354085600C489DB /* sk0_HEAD.png */,
+				A9B7BFF21354085600C489DB /* sk0_LEFT_ELBOW_2_LEFT_HAND.png */,
+				A9B7BFF31354085600C489DB /* sk0_LEFT_KNEE_2_LEFT_FOOT.png */,
+				A9B7BFF41354085600C489DB /* sk0_LEFT_SHOULDER_2_LEFT_ELBOW.png */,
+				A9B7BFF51354085600C489DB /* sk0_RIGHT_ELBOW_2_RIGHT_HAND.png */,
+				A9B7BFF61354085600C489DB /* sk0_RIGHT_HIP_2_RIGHT_KNEE.png */,
+				A9B7BFF71354085600C489DB /* sk0_RIGHT_KNEE_2_RIGHT_FOOT.png */,
+				A9B7BFF81354085600C489DB /* sk0_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */,
+				A9B7BFF91354085600C489DB /* sk0_TORSO.png */,
+			);
+			name = "Avatar 0";
+			sourceTree = "<group>";
+		};
+		A9B7BFCE1353FF1400C489DB /* Avatar 1 */ = {
+			isa = PBXGroup;
+			children = (
+				A9B7C0031354086100C489DB /* sk1_HEAD.png */,
+				A9B7C0041354086100C489DB /* sk1_LEFT_ELBOW_2_LEFT_HAND.png */,
+				A9B7C0051354086100C489DB /* sk1_LEFT_HIP_2_LEFT_KNEE.png */,
+				A9B7C0061354086100C489DB /* sk1_LEFT_KNEE_2_LEFT_FOOT.png */,
+				A9B7C0071354086100C489DB /* sk1_LEFT_SHOULDER_2_LEFT_ELBOW.png */,
+				A9B7C0081354086100C489DB /* sk1_RIGHT_ELBOW_2_RIGHT_HAND.png */,
+				A9B7C0091354086100C489DB /* sk1_RIGHT_HIP_2_RIGHT_KNEE.png */,
+				A9B7C00A1354086100C489DB /* sk1_RIGHT_KNEE_2_RIGHT_FOOT.png */,
+				A9B7C00B1354086100C489DB /* sk1_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */,
+				A9B7C00C1354086100C489DB /* sk1_TORSO.png */,
+			);
+			name = "Avatar 1";
+			sourceTree = "<group>";
+		};
+		A9B7BFCF1353FF1E00C489DB /* Avatar 2 */ = {
+			isa = PBXGroup;
+			children = (
+				A9B7C0171354086E00C489DB /* sk2_HEAD.png */,
+				A9B7C0181354086E00C489DB /* sk2_LEFT_ELBOW_2_LEFT_HAND.png */,
+				A9B7C0191354086E00C489DB /* sk2_LEFT_HIP_2_LEFT_KNEE.png */,
+				A9B7C01A1354086E00C489DB /* sk2_LEFT_KNEE_2_LEFT_FOOT.png */,
+				A9B7C01B1354086E00C489DB /* sk2_LEFT_SHOULDER_2_LEFT_ELBOW.png */,
+				A9B7C01C1354086E00C489DB /* sk2_RIGHT_ELBOW_2_RIGHT_HAND.png */,
+				A9B7C01D1354086E00C489DB /* sk2_RIGHT_HIP_2_RIGHT_KNEE.png */,
+				A9B7C01E1354086E00C489DB /* sk2_RIGHT_KNEE_2_RIGHT_FOOT.png */,
+				A9B7C01F1354086E00C489DB /* sk2_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */,
+				A9B7C0201354086E00C489DB /* sk2_TORSO.png */,
+			);
+			name = "Avatar 2";
+			sourceTree = "<group>";
+		};
+		A9B7BFD01353FF2800C489DB /* Avatar 3 */ = {
+			isa = PBXGroup;
+			children = (
+				A9B7C02B1354087900C489DB /* sk3_HEAD.png */,
+				A9B7C02C1354087900C489DB /* sk3_LEFT_ELBOW_2_LEFT_HAND.png */,
+				A9B7C02D1354087900C489DB /* sk3_LEFT_HIP_2_LEFT_KNEE.png */,
+				A9B7C02E1354087900C489DB /* sk3_LEFT_KNEE_2_LEFT_FOOT.png */,
+				A9B7C02F1354087900C489DB /* sk3_LEFT_SHOULDER_2_LEFT_ELBOW.png */,
+				A9B7C0301354087900C489DB /* sk3_RIGHT_ELBOW_2_RIGHT_HAND.png */,
+				A9B7C0311354087900C489DB /* sk3_RIGHT_HIP_2_RIGHT_KNEE.png */,
+				A9B7C0321354087900C489DB /* sk3_RIGHT_KNEE_2_RIGHT_FOOT.png */,
+				A9B7C0331354087900C489DB /* sk3_RIGHT_SHOULDER_2_RIGHT_ELBOW.png */,
+				A9B7C0341354087900C489DB /* sk3_TORSO.png */,
+			);
+			name = "Avatar 3";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -491,16 +610,45 @@
 			files = (
 				00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */,
 				A929AD9B13482EAB004E43F2 /* TODO in Resources */,
-				A9F842A4134EDF7E005977BE /* HEAD.png in Resources */,
-				A9F842A5134EDF7E005977BE /* LEFT_ELBOW_2_LEFT_HAND.png in Resources */,
-				A9F842A6134EDF7E005977BE /* LEFT_HIP_2_LEFT_KNEE.png in Resources */,
-				A9F842A7134EDF7E005977BE /* LEFT_KNEE_2_LEFT_FOOT.png in Resources */,
-				A9F842A8134EDF7E005977BE /* LEFT_SHOULDER_2_LEFT_ELBOW.png in Resources */,
-				A9F842A9134EDF7E005977BE /* RIGHT_ELBOW_2_RIGHT_HAND.png in Resources */,
-				A9F842AA134EDF7E005977BE /* RIGHT_HIP_2_RIGHT_KNEE.png in Resources */,
-				A9F842AB134EDF7E005977BE /* RIGHT_KNEE_2_RIGHT_FOOT.png in Resources */,
-				A9F842AC134EDF7E005977BE /* RIGHT_SHOULDER_2_RIGHT_ELBOW.png in Resources */,
-				A9F842AD134EDF7E005977BE /* TORSO.png in Resources */,
+				A9B7BFFA1354085600C489DB /* sk0_HEAD.png in Resources */,
+				A9B7BFFB1354085600C489DB /* sk0_LEFT_ELBOW_2_LEFT_HAND.png in Resources */,
+				A9B7BFFC1354085600C489DB /* sk0_LEFT_KNEE_2_LEFT_FOOT.png in Resources */,
+				A9B7BFFD1354085600C489DB /* sk0_LEFT_SHOULDER_2_LEFT_ELBOW.png in Resources */,
+				A9B7BFFE1354085600C489DB /* sk0_RIGHT_ELBOW_2_RIGHT_HAND.png in Resources */,
+				A9B7BFFF1354085600C489DB /* sk0_RIGHT_HIP_2_RIGHT_KNEE.png in Resources */,
+				A9B7C0001354085600C489DB /* sk0_RIGHT_KNEE_2_RIGHT_FOOT.png in Resources */,
+				A9B7C0011354085600C489DB /* sk0_RIGHT_SHOULDER_2_RIGHT_ELBOW.png in Resources */,
+				A9B7C0021354085600C489DB /* sk0_TORSO.png in Resources */,
+				A9B7C00D1354086100C489DB /* sk1_HEAD.png in Resources */,
+				A9B7C00E1354086100C489DB /* sk1_LEFT_ELBOW_2_LEFT_HAND.png in Resources */,
+				A9B7C00F1354086100C489DB /* sk1_LEFT_HIP_2_LEFT_KNEE.png in Resources */,
+				A9B7C0101354086100C489DB /* sk1_LEFT_KNEE_2_LEFT_FOOT.png in Resources */,
+				A9B7C0111354086100C489DB /* sk1_LEFT_SHOULDER_2_LEFT_ELBOW.png in Resources */,
+				A9B7C0121354086100C489DB /* sk1_RIGHT_ELBOW_2_RIGHT_HAND.png in Resources */,
+				A9B7C0131354086100C489DB /* sk1_RIGHT_HIP_2_RIGHT_KNEE.png in Resources */,
+				A9B7C0141354086100C489DB /* sk1_RIGHT_KNEE_2_RIGHT_FOOT.png in Resources */,
+				A9B7C0151354086100C489DB /* sk1_RIGHT_SHOULDER_2_RIGHT_ELBOW.png in Resources */,
+				A9B7C0161354086100C489DB /* sk1_TORSO.png in Resources */,
+				A9B7C0211354086E00C489DB /* sk2_HEAD.png in Resources */,
+				A9B7C0221354086E00C489DB /* sk2_LEFT_ELBOW_2_LEFT_HAND.png in Resources */,
+				A9B7C0231354086E00C489DB /* sk2_LEFT_HIP_2_LEFT_KNEE.png in Resources */,
+				A9B7C0241354086E00C489DB /* sk2_LEFT_KNEE_2_LEFT_FOOT.png in Resources */,
+				A9B7C0251354086E00C489DB /* sk2_LEFT_SHOULDER_2_LEFT_ELBOW.png in Resources */,
+				A9B7C0261354086E00C489DB /* sk2_RIGHT_ELBOW_2_RIGHT_HAND.png in Resources */,
+				A9B7C0271354086E00C489DB /* sk2_RIGHT_HIP_2_RIGHT_KNEE.png in Resources */,
+				A9B7C0281354086E00C489DB /* sk2_RIGHT_KNEE_2_RIGHT_FOOT.png in Resources */,
+				A9B7C0291354086E00C489DB /* sk2_RIGHT_SHOULDER_2_RIGHT_ELBOW.png in Resources */,
+				A9B7C02A1354086E00C489DB /* sk2_TORSO.png in Resources */,
+				A9B7C0351354087900C489DB /* sk3_HEAD.png in Resources */,
+				A9B7C0361354087900C489DB /* sk3_LEFT_ELBOW_2_LEFT_HAND.png in Resources */,
+				A9B7C0371354087900C489DB /* sk3_LEFT_HIP_2_LEFT_KNEE.png in Resources */,
+				A9B7C0381354087900C489DB /* sk3_LEFT_KNEE_2_LEFT_FOOT.png in Resources */,
+				A9B7C0391354087900C489DB /* sk3_LEFT_SHOULDER_2_LEFT_ELBOW.png in Resources */,
+				A9B7C03A1354087900C489DB /* sk3_RIGHT_ELBOW_2_RIGHT_HAND.png in Resources */,
+				A9B7C03B1354087900C489DB /* sk3_RIGHT_HIP_2_RIGHT_KNEE.png in Resources */,
+				A9B7C03C1354087900C489DB /* sk3_RIGHT_KNEE_2_RIGHT_FOOT.png in Resources */,
+				A9B7C03D1354087900C489DB /* sk3_RIGHT_SHOULDER_2_RIGHT_ELBOW.png in Resources */,
+				A9B7C03E1354087900C489DB /* sk3_TORSO.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

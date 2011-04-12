@@ -37,13 +37,15 @@ class AvatarSkeleton {
 
 public:
 	
-	AvatarSkeleton(std::string resourceName);
+	AvatarSkeleton(const std::string resourceName, const ci::Vec3f &positionOffset);
 	~AvatarSkeleton();
 	void draw();
-	void update(std::vector<Vec2f> joints, const float scale);
+	void update(std::vector<ci::Vec2f> joints, const float scale);
+	bool operator<(const AvatarSkeleton &other);
 	
 	std::string				mName;
 	std::vector<DollBone *>	mBones;
+	ci::Vec3f				mPositionOffset;
 	DollTorso				*mTorso;
 	DollHead				*mHead;
 	float					mScale;

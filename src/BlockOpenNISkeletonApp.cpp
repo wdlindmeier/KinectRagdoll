@@ -13,8 +13,10 @@
 #include "cinder/imageio.h"
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Texture.h"
+#include "cinder/Rand.h"
 #include "VOpenNIHeaders.h"
 #include "AvatarSkeleton.h"
+#include <boost/lexical_cast.hpp>
 
 using namespace ci;
 using namespace ci::app;
@@ -94,9 +96,10 @@ protected:
 class BlockOpenNISampleAppApp : public AppBasic 
 {
 public:
-	static const int WIDTH = 1280;
-	static const int HEIGHT = 720;
+	static const int WIDTH = 640.0; //1280;
+	static const int HEIGHT = 480.0; //720;
 
+	// NOTE: Dont change these
 	static const int KINECT_COLOR_WIDTH = 640;	//1280;
 	static const int KINECT_COLOR_HEIGHT = 480;	//1024;
 	static const int KINECT_COLOR_FPS = 30;	//15;
@@ -104,14 +107,14 @@ public:
 	static const int KINECT_DEPTH_HEIGHT = 480;
 	static const int KINECT_DEPTH_FPS = 30;
 
-
 	void setup();
 	void shutdown();
 	void mouseDown( MouseEvent event );	
 	void update();
 	void draw();
 	void keyDown( KeyEvent event );
-
+	bool addNewAvatar(float scale=1.0);
+	
 	ImageSourceRef getColorImage()
 	{
 		// register a reference to the active buffer
@@ -150,16 +153,21 @@ public:	// Members
 	gl::Texture				mDepthTex;
 	gl::Texture				mOneUserTex;	 
 	
-	AvatarSkeleton			*mAvatar;
-	float					mScale;
+	//AvatarSkeleton			*mAvatar;
+	std::vector<AvatarSkeleton *> mAvatars;
+	float					mScale, mHandsDistance;
 	bool					mShouldRenderSkeleton, mIsTracking;
+	long					mAppAge, mAgeOfLastClap;
 };
 
 void BlockOpenNISampleAppApp::setup()
 {
-	mAvatar = new AvatarSkeleton("");
+	addNewAvatar();
 	mScale = 112.0;
 	mShouldRenderSkeleton = false;
+	mAppAge = 0;
+	mAgeOfLastClap = 0;
+	mHandsDistance = -1;
 	
 	_manager = V::OpenNIDeviceManager::InstancePtr();
 	_device0 = _manager->createDevice( "data/configIR.xml", true );
@@ -179,9 +187,36 @@ void BlockOpenNISampleAppApp::setup()
 	mOneUserTex = gl::Texture( KINECT_DEPTH_WIDTH, KINECT_DEPTH_HEIGHT, format );
 }
 
+bool BlockOpenNISampleAppApp::addNewAvatar(float scale)
+{
+	
+#define mNumMaxAvatars	4
+	
+	int avatarCount = mAvatars.size();
+	if(avatarCount < mNumMaxAvatars){
+		string avatarPrefix = "sk" + boost::lexical_cast<string>(avatarCount) + "_";
+		// TODO: Use Z as a distance (scale) multiplier
+		Vec3f positionOffset = Vec3f(200.0 * avatarCount, 0.0, scale);
+		AvatarSkeleton *avatar = new AvatarSkeleton(avatarPrefix, positionOffset);
+		mAvatars.push_back(avatar);
+		
+		// Sort the avatars by their depth
+		// The depth is compared by the "<" operator
+		sort (mAvatars.begin(), mAvatars.end());
+		
+		return true;
+	}
+	return false;
+}
+
 void BlockOpenNISampleAppApp::shutdown()
 {
-	delete mAvatar;
+	//delete mAvatar;
+	for( std::vector<AvatarSkeleton*>::iterator it = mAvatars.begin(); it != mAvatars.end(); it++){
+		AvatarSkeleton *avatar = *it;
+		delete avatar;
+	}
+	mAvatars.clear();
 }
 
 void BlockOpenNISampleAppApp::mouseDown( MouseEvent event )
@@ -190,6 +225,8 @@ void BlockOpenNISampleAppApp::mouseDown( MouseEvent event )
 
 void BlockOpenNISampleAppApp::update()
 {	
+	++mAppAge;
+	
 	// Update textures
 	mColorTex.update( getColorImage() );
 	mDepthTex.update( getDepthImage24() );	// Histogram
@@ -225,7 +262,37 @@ void BlockOpenNISampleAppApp::update()
 			joints.push_back(Vec2f(point.X, point.Y));
 		}
 		
-		mAvatar->update(joints, mScale);	
+		//mAvatar->update(joints, mScale);	
+		for( std::vector<AvatarSkeleton*>::iterator it = mAvatars.begin(); it != mAvatars.end(); it++){
+			AvatarSkeleton *avatar = *it;
+			avatar->update(joints, mScale);	
+		}		
+		
+#define	kMaxHandsDistanceForClap	25.0f
+#define	kMinTimeBetweenClaps		120.0f
+		// Check for "clap"
+		if(mIsTracking){
+			Vec2f leftHandJoint = joints[V::SKEL_LEFT_HAND];
+			Vec2f rightHandJoint = joints[V::SKEL_RIGHT_HAND];
+			Vec2f headJoint = joints[V::SKEL_HEAD];
+			Vec2f handsDelta = leftHandJoint - rightHandJoint;
+			float newHandsDistance = handsDelta.length();
+			// The big condition
+			if(newHandsDistance < kMaxHandsDistanceForClap &&
+			   mHandsDistance >= kMaxHandsDistanceForClap &&
+//			   (mAppAge - mAgeOfLastClap) > kMinTimeBetweenClaps && 
+			   leftHandJoint.y < headJoint.y && 
+			   rightHandJoint.y < headJoint.y){
+				// TODO: If BOB is on the stage, check if the hands are in proximity to the head joint
+				// That would be a "hat" gesture
+				
+				// Dis is a clap sun
+				if(addNewAvatar(Rand::randFloat(0.3,1.3))){
+					mAgeOfLastClap = mAppAge;
+				}
+			}
+			mHandsDistance = newHandsDistance;		
+		}
 	}
 }
 
@@ -259,13 +326,28 @@ void BlockOpenNISampleAppApp::draw()
 	if( _manager->hasUsers() && _manager->hasUser(1) )
 	{
 		// Draw the avatar
-		mAvatar->draw();
+		//mAvatar->draw();
+		for( std::vector<AvatarSkeleton*>::iterator it = mAvatars.begin(); it != mAvatars.end(); it++){
+			AvatarSkeleton *avatar = *it;
+			avatar->draw();
+		}				
 
 		// Draw the skeleton 
 		if(mShouldRenderSkeleton){
 			// Render skeleton if available
 			_manager->renderJoints( 3 );
 		}
+	}
+	
+	// If the clap was recent, show a "flash"
+	float ageOfLastClap = mAppAge - mAgeOfLastClap;
+#define kFlashDuration	30.0f
+	if((ageOfLastClap < kFlashDuration) && 
+	   (mAppAge > kFlashDuration)){ // We dont want this to appear in the first frame
+		float alpha = 1.0 - (ageOfLastClap / kFlashDuration);
+		gl::enableAlphaBlending();
+		gl::color( cinder::ColorA(1, 1, 1, alpha) );
+		gl::drawSolidRect(Rectf(0.0, 0.0, WIDTH, HEIGHT));		
 	}
 }
 
