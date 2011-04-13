@@ -27,6 +27,7 @@ public:
 	DollBlob(std::string imagePath);
 	void draw();
 	void update(const ci::Vec3f &anchor, float scale);
+	void setImage(ci::ImageSourceRef imageSource);
 	
 	float			mScale;
 	ci::Vec2f		mVecAngle;

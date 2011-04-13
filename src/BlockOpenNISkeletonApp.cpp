@@ -17,11 +17,14 @@
 #include "VOpenNIHeaders.h"
 #include "AvatarSkeleton.h"
 #include <boost/lexical_cast.hpp>
+#include "cinder/params/Params.h"
+#include "cinder/ip/Resize.h"
+
+#define USE_PARAMS 1
 
 using namespace ci;
 using namespace ci::app;
 using namespace std;
-
 
 class ImageSourceKinectColor : public ImageSource 
 {
@@ -96,17 +99,18 @@ protected:
 class BlockOpenNISampleAppApp : public AppBasic 
 {
 public:
-	static const int WIDTH = 640.0; //1280;
-	static const int HEIGHT = 480.0; //720;
+	static const int WIDTH = 640; //1280;
+	static const int HEIGHT = 480; //720;
 
 	// NOTE: Dont change these
 	static const int KINECT_COLOR_WIDTH = 640;	//1280;
 	static const int KINECT_COLOR_HEIGHT = 480;	//1024;
-	static const int KINECT_COLOR_FPS = 30;	//15;
+	static const int KINECT_COLOR_FPS = 15;//30;	//15;
 	static const int KINECT_DEPTH_WIDTH = 640;
 	static const int KINECT_DEPTH_HEIGHT = 480;
 	static const int KINECT_DEPTH_FPS = 30;
 
+	void prepareSettings( Settings* settings );
 	void setup();
 	void shutdown();
 	void mouseDown( MouseEvent event );	
@@ -152,7 +156,7 @@ public:	// Members
 
 	gl::Texture				mColorTex;
 	gl::Texture				mDepthTex;
-	gl::Texture				mOneUserTex;	 
+//	gl::Texture				mOneUserTex;	 
 	
 	AvatarSkeleton			*mAvatar;
 	int						mCurrentAvatarIndex;
@@ -160,20 +164,48 @@ public:	// Members
 	float					mScale, mHandsDistance;
 	bool					mShouldRenderSkeleton, mIsTracking;
 	long					mAppAge, mAgeOfLastClap;
+	
+	// Head masking
+	float			mXCalibration, mYCalibration, mScaleCalibration;
+	float			mXOffsetDepthMultiplier, mYOffsetDepthMultiplier;
+	
+#if USE_PARAMS == 1
+	params::InterfaceGl	mParams;
+#endif
+
 };
 
-void BlockOpenNISampleAppApp::setup()
+void BlockOpenNISampleAppApp::prepareSettings( Settings* settings )
 {
+	settings->setWindowSize( WIDTH, HEIGHT );
+	mXCalibration = -22.0;
+	mYCalibration = -34.0;
+	mScaleCalibration = 1.08;		
+	mXOffsetDepthMultiplier = 0.0;
+	mYOffsetDepthMultiplier = 0.0;
+
+#if USE_PARAMS == 1	 
+	mParams = params::InterfaceGl("Calibration", Vec2i(200,100));
+
+	mParams.addParam( "mXCalibration", &mXCalibration, "min=-1000.0 max=1000.0 step=1.0 keyIncr=2 keyDecr=1");
+	mParams.addParam( "mYCalibration", &mYCalibration, "min=-1000.0 max=1000.0 step=1.0 keyIncr=0 keyDecr=9");
+	mParams.addParam( "mScaleCalibration", &mScaleCalibration, "min=-10.0 max=10.0 step=0.01 keyIncr=s keyDecr=a");
+	mParams.addParam( "mXOffsetDepthMultiplier", &mXOffsetDepthMultiplier, "min=-100.0 max=100.0 step=0.5 keyIncr=x keyDecr=z");
+	mParams.addParam( "mYOffsetDepthMultiplier", &mYOffsetDepthMultiplier, "min=-100.0 max=100.0 step=0.5 keyIncr=y keyDecr=h");
+#endif
+	
 	mCurrentAvatarIndex = -1;
 	mAvatar	= NULL;
-	
-	iterateAvatar();
-//	addNewAvatar();
 	mScale = 112.0;
 	mShouldRenderSkeleton = false;
 	mAppAge = 0;
 	mAgeOfLastClap = 0;
 	mHandsDistance = -1;
+}
+	
+void BlockOpenNISampleAppApp::setup()
+{	
+	iterateAvatar();
 	
 	_manager = V::OpenNIDeviceManager::InstancePtr();
 	_device0 = _manager->createDevice( "data/configIR.xml", true );
@@ -185,12 +217,11 @@ void BlockOpenNISampleAppApp::setup()
 	_device0->setPrimaryBuffer( V::NODE_TYPE_DEPTH );
 	_manager->start();
 
-
 	gl::Texture::Format format;
 	gl::Texture::Format depthFormat;
 	mColorTex = gl::Texture( KINECT_COLOR_WIDTH, KINECT_COLOR_HEIGHT, format );
 	mDepthTex = gl::Texture( KINECT_DEPTH_WIDTH, KINECT_DEPTH_HEIGHT, format );
-	mOneUserTex = gl::Texture( KINECT_DEPTH_WIDTH, KINECT_DEPTH_HEIGHT, format );
+	//mOneUserTex = gl::Texture( KINECT_DEPTH_WIDTH, KINECT_DEPTH_HEIGHT, format );
 }
 
 #define mNumMaxAvatars	4
@@ -250,12 +281,15 @@ void BlockOpenNISampleAppApp::update()
 	++mAppAge;
 	
 	// Update textures
-	mColorTex.update( getColorImage() );
-	mDepthTex.update( getDepthImage24() );	// Histogram
+	ImageSourceRef colorImage = getColorImage();
+	ImageSourceRef depthImage = getDepthImage24();
+	mColorTex.update( colorImage );
+	mDepthTex.update( depthImage );	// Histogram
 
 	// Uses manager to handle users.
 	if( _manager->hasUsers() && _manager->hasUser(1) ){ 
-		mOneUserTex.update( getUserColorImage(1) );
+
+		//mOneUserTex.update( getUserColorImage(1) );
 				
 		xn::DepthGenerator* depth = _device0->getDepthGenerator();
 		
@@ -293,6 +327,7 @@ void BlockOpenNISampleAppApp::update()
 				avatar->update(joints, mScale);	
 			}		
 			*/
+			
 #define	kMaxHandsDistanceForClap	25.0f
 #define	kMinTimeBetweenClaps		120.0f
 		// Check for "clap"
@@ -317,6 +352,74 @@ void BlockOpenNISampleAppApp::update()
 				}
 			}
 			mHandsDistance = newHandsDistance;		
+			
+			
+			// Grab the users head
+
+#define kFieldWidth			KINECT_COLOR_WIDTH
+#define kFieldHeight		KINECT_COLOR_HEIGHT
+			
+			Surface rgbImage(colorImage);
+			
+			// Resize and crop the rgb to callibrate
+
+			// TODO: Maybe this is better as high-res
+
+			Surface resizedColorSurface(kFieldWidth, kFieldHeight, false);
+			int x1 = mXCalibration / mScaleCalibration * -1.0;
+			int y1 = mYCalibration / mScaleCalibration * -1.0;
+			int x2 = x1 + (kFieldWidth / mScaleCalibration);
+			int y2 = x1 + (kFieldHeight / mScaleCalibration);
+			ci::ip::resize(rgbImage, Area(x1,y1,x2,y2), &resizedColorSurface, Area(0,0,kFieldWidth,kFieldHeight));
+		
+			Channel8u depthChannel(depthImage);// = mKinect.getDepthImage();
+			//		Surface8u rgbImage = mKinect.getVideoImage();
+			//		int width = rgbImage.getWidth();//
+			//		int height = rgbImage.getHeight();
+			
+			// NOTE: We could make this arbitrarily bigger
+			int halfHeadWidth = 80.0 * mAvatar->mScale; //(mAvatar->mHead->mImageWidth * mAvatar->mScale) / 2;
+			int halfHeadHeight = 80.0 * mAvatar->mScale; //(mAvatar->mHead->mImageHeight * mAvatar->mScale) / 2;
+			Vec2f headAnchor = joints[V::SKEL_HEAD];
+			int startX = headAnchor.x - halfHeadWidth;
+			int endX = headAnchor.x + halfHeadWidth;
+			int startY = headAnchor.y - halfHeadHeight;
+			int endY = headAnchor.y + halfHeadHeight;
+		
+			Surface8u headImage(halfHeadWidth * 2, halfHeadHeight * 2, true);
+
+			// TMP: Just grabbing the depth head
+			for(int y=startY;y<endY;++y){
+				for(int x=startX;x<endX;++x){
+					// Just grab the small head slice
+					Vec2i cropPos(x-startX, y-startY);
+					Vec2i dataPos(x, y);
+					//float a = (float)depthChannel.getValue(pos) / 255.0;
+					int depthValue = depthChannel.getValue(dataPos);
+					Color8u rgbPix = resizedColorSurface.getPixel(dataPos);
+					//int alpha = (depthValue > 150) ? 255 : 0;
+					ColorA8u rgbaPix(rgbPix.r, rgbPix.g, rgbPix.b, depthValue);
+					//ColorA8u rgbaPix(depthValue, depthValue, depthValue, depthValue);
+					headImage.setPixel(cropPos, rgbaPix);
+				}
+			}
+								
+			// Reset the head image
+			mAvatar->mHead->setImage(ImageSourceRef(headImage));
+			
+			/*
+			for(int y=0;y<kFieldHeight;++y){
+				for(int x=0;x<kFieldWidth;++x){
+					Vec2i pos = Vec2i(x,y);
+					float a = (float)depthChannel.getValue(pos) / 255.0;				
+					Vec2i rgbPos(pos.x + (a * mXOffsetDepthMultiplier), pos.y + (a * mYOffsetDepthMultiplier));
+					Color8u rgbPix = mRGBSurface.getPixel(rgbPos);
+					Color8u rgbaPix(rgbPix.r * a, rgbPix.g * a, rgbPix.b * a);
+					rgbDepth.setPixel(pos, rgbaPix);
+				}
+			}
+			*/
+					
 		}
 	}
 }
@@ -334,10 +437,12 @@ void BlockOpenNISampleAppApp::draw()
 	// Draw the green user texture
 	if( _manager->hasUsers() && _manager->hasUser(1) ){ 
 
+		/*
 		if(!mIsTracking){
 			// Only draw the user texture if we're not tracking 
 			gl::draw( mOneUserTex, Rectf( 0, 0, 640, 480) );		
 		}
+		 */
 	}
 
 	// Draw the info panels
@@ -347,7 +452,14 @@ void BlockOpenNISampleAppApp::draw()
 	float yoff = 10;		
 	gl::draw( mDepthTex, Rectf( xoff, yoff, xoff+sx, yoff+sy) );
 	gl::draw( mColorTex, Rectf( xoff+sx*1, yoff, xoff+sx*2, yoff+sy) );
-
+	// TMP
+	/*
+	 This shows IR data
+	uint8_t *data = _device0->mColorSurface->getData();
+	ImageSourceRef colorImageSource(new ImageSourceKinectColor( data, 640, 480 ));
+	gl::draw( gl::Texture(colorImageSource), Rectf( 0, 0, 640, 480) );
+	 */
+	
 	if( _manager->hasUsers() && _manager->hasUser(1) )
 	{
 		if(mIsTracking){
@@ -367,6 +479,10 @@ void BlockOpenNISampleAppApp::draw()
 		}
 	}
 	
+#if USE_PARAMS == 1
+	params::InterfaceGl::draw();
+#endif
+	
 	// If the clap was recent, show a "flash"
 	float ageOfLastClap = mAppAge - mAgeOfLastClap;
 #define kFlashDuration	30.0f
@@ -377,6 +493,7 @@ void BlockOpenNISampleAppApp::draw()
 		gl::color( cinder::ColorA(1, 1, 1, alpha) );
 		gl::drawSolidRect(Rectf(0.0, 0.0, WIDTH, HEIGHT));		
 	}
+	
 }
 
 void BlockOpenNISampleAppApp::keyDown( KeyEvent event )
