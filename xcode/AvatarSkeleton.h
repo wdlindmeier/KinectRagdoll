@@ -37,6 +37,7 @@ class AvatarSkeleton {
 
 public:
 	
+	AvatarSkeleton(const std::string resourceName);
 	AvatarSkeleton(const std::string resourceName, const ci::Vec3f &positionOffset);
 	~AvatarSkeleton();
 	void draw();
@@ -49,5 +50,8 @@ public:
 	DollTorso				*mTorso;
 	DollHead				*mHead;
 	float					mScale;
+	
+private:
+	void initWithName(const std::string resourceName);
 	
 };

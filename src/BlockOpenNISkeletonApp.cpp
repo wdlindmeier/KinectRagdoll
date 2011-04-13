@@ -113,7 +113,8 @@ public:
 	void update();
 	void draw();
 	void keyDown( KeyEvent event );
-	bool addNewAvatar(float scale=1.0);
+//	bool addNewAvatar(float scale=1.0);
+	bool iterateAvatar();
 	
 	ImageSourceRef getColorImage()
 	{
@@ -153,8 +154,9 @@ public:	// Members
 	gl::Texture				mDepthTex;
 	gl::Texture				mOneUserTex;	 
 	
-	//AvatarSkeleton			*mAvatar;
-	std::vector<AvatarSkeleton *> mAvatars;
+	AvatarSkeleton			*mAvatar;
+	int						mCurrentAvatarIndex;
+	//std::vector<AvatarSkeleton *> mAvatars;
 	float					mScale, mHandsDistance;
 	bool					mShouldRenderSkeleton, mIsTracking;
 	long					mAppAge, mAgeOfLastClap;
@@ -162,7 +164,11 @@ public:	// Members
 
 void BlockOpenNISampleAppApp::setup()
 {
-	addNewAvatar();
+	mCurrentAvatarIndex = -1;
+	mAvatar	= NULL;
+	
+	iterateAvatar();
+//	addNewAvatar();
 	mScale = 112.0;
 	mShouldRenderSkeleton = false;
 	mAppAge = 0;
@@ -187,10 +193,23 @@ void BlockOpenNISampleAppApp::setup()
 	mOneUserTex = gl::Texture( KINECT_DEPTH_WIDTH, KINECT_DEPTH_HEIGHT, format );
 }
 
+#define mNumMaxAvatars	4
+
+bool BlockOpenNISampleAppApp::iterateAvatar()
+{
+	mCurrentAvatarIndex = (mCurrentAvatarIndex + 1) % mNumMaxAvatars;
+	if(mAvatar){
+		delete mAvatar;
+	}
+	string avatarPrefix = "sk" + boost::lexical_cast<string>(mCurrentAvatarIndex) + "_";
+	mAvatar = new AvatarSkeleton(avatarPrefix);	
+	return true;
+}
+
+/*
 bool BlockOpenNISampleAppApp::addNewAvatar(float scale)
 {
 	
-#define mNumMaxAvatars	4
 	
 	int avatarCount = mAvatars.size();
 	if(avatarCount < mNumMaxAvatars){
@@ -208,15 +227,18 @@ bool BlockOpenNISampleAppApp::addNewAvatar(float scale)
 	}
 	return false;
 }
-
+*/
 void BlockOpenNISampleAppApp::shutdown()
 {
 	//delete mAvatar;
+	/*
 	for( std::vector<AvatarSkeleton*>::iterator it = mAvatars.begin(); it != mAvatars.end(); it++){
 		AvatarSkeleton *avatar = *it;
 		delete avatar;
 	}
 	mAvatars.clear();
+	 */
+	delete mAvatar;
 }
 
 void BlockOpenNISampleAppApp::mouseDown( MouseEvent event )
@@ -242,36 +264,39 @@ void BlockOpenNISampleAppApp::update()
 		mIsTracking = _manager->getUser(1)->getUserState() == V::USER_TRACKING;
 		//console() << "mIsTracking ? " << (mIsTracking ? "YES" : "NO") << "\n";
 		
-		std::vector<Vec2f> joints;
-		
-		int index = 0;
-		
-		joints.push_back(Vec2f(0,0)); // This list starts at 1, so I have to pad joints
-		
-		for( std::vector<V::OpenNIBone*>::iterator it = boneList.begin(); it != boneList.end(); it++, index++ )
-		{
-			V::OpenNIBone* bone = *it;			
-			// Convert a point from world coordinates to screen coordinates
-			XnPoint3D point;
-			XnPoint3D realJointPos;
-			realJointPos.X = bone->position[0];
-			realJointPos.Y = bone->position[1];
-			realJointPos.Z = bone->position[2];
-			depth->ConvertRealWorldToProjective( 1, &realJointPos, &point );			
+		if(mIsTracking){
 			
-			joints.push_back(Vec2f(point.X, point.Y));
-		}
-		
-		//mAvatar->update(joints, mScale);	
-		for( std::vector<AvatarSkeleton*>::iterator it = mAvatars.begin(); it != mAvatars.end(); it++){
-			AvatarSkeleton *avatar = *it;
-			avatar->update(joints, mScale);	
-		}		
-		
+			std::vector<Vec2f> joints;
+			
+			int index = 0;
+			
+			joints.push_back(Vec2f(0,0)); // This list starts at 1, so I have to pad joints
+			
+			for( std::vector<V::OpenNIBone*>::iterator it = boneList.begin(); it != boneList.end(); it++, index++ )
+			{
+				V::OpenNIBone* bone = *it;			
+				// Convert a point from world coordinates to screen coordinates
+				XnPoint3D point;
+				XnPoint3D realJointPos;
+				realJointPos.X = bone->position[0];
+				realJointPos.Y = bone->position[1];
+				realJointPos.Z = bone->position[2];
+				depth->ConvertRealWorldToProjective( 1, &realJointPos, &point );			
+				
+				joints.push_back(Vec2f(point.X, point.Y));
+			}
+
+			mAvatar->update(joints, mScale);	
+			/*
+			for( std::vector<AvatarSkeleton*>::iterator it = mAvatars.begin(); it != mAvatars.end(); it++){
+				AvatarSkeleton *avatar = *it;
+				avatar->update(joints, mScale);	
+			}		
+			*/
 #define	kMaxHandsDistanceForClap	25.0f
 #define	kMinTimeBetweenClaps		120.0f
 		// Check for "clap"
-		if(mIsTracking){
+
 			Vec2f leftHandJoint = joints[V::SKEL_LEFT_HAND];
 			Vec2f rightHandJoint = joints[V::SKEL_RIGHT_HAND];
 			Vec2f headJoint = joints[V::SKEL_HEAD];
@@ -287,7 +312,7 @@ void BlockOpenNISampleAppApp::update()
 				// That would be a "hat" gesture
 				
 				// Dis is a clap sun
-				if(addNewAvatar(Rand::randFloat(0.3,1.3))){
+				if(iterateAvatar()){
 					mAgeOfLastClap = mAppAge;
 				}
 			}
@@ -325,17 +350,20 @@ void BlockOpenNISampleAppApp::draw()
 
 	if( _manager->hasUsers() && _manager->hasUser(1) )
 	{
-		// Draw the avatar
-		//mAvatar->draw();
-		for( std::vector<AvatarSkeleton*>::iterator it = mAvatars.begin(); it != mAvatars.end(); it++){
-			AvatarSkeleton *avatar = *it;
-			avatar->draw();
-		}				
-
-		// Draw the skeleton 
-		if(mShouldRenderSkeleton){
-			// Render skeleton if available
-			_manager->renderJoints( 3 );
+		if(mIsTracking){
+			// Draw the avatar
+			mAvatar->draw();
+			/*
+			for( std::vector<AvatarSkeleton*>::iterator it = mAvatars.begin(); it != mAvatars.end(); it++){
+				AvatarSkeleton *avatar = *it;
+				avatar->draw();
+			}				
+			*/
+			// Draw the skeleton 
+			if(mShouldRenderSkeleton){
+				// Render skeleton if available
+				_manager->renderJoints( 3 );
+			}
 		}
 	}
 	
